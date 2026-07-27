@@ -348,6 +348,60 @@
       </div>
 
     </div>
+
+    <div class="artifact-card" style="margin-top:28px;">
+      <span class="artifact-tag">Artifact 03 · AI Coaching Session</span>
+      <h3>Reasoning Through Real ML Failure Modes with an AI Coach</h3>
+      <p class="artifact-meta">Machine Learning Training Methods Coach (AI Chatbot) · Applied Problem-Solving Across Three Data Scenarios</p>
+
+      <div class="artifact-grid">
+        <div class="full-span">
+          <div class="field-label">Introduction</div>
+          <p class="field-body">This artifact is a worked transcript from a guided AI chatbot activity in which I reasoned through three progressively harder, real-world data problems: missing values, extreme class imbalance, and data drift. Rather than being handed answers, I had to propose and defend my own approach to each scenario before receiving feedback.</p>
+        </div>
+
+        <div class="full-span">
+          <div class="field-label">Description</div>
+          <p class="field-body muted">After reviewing the foundational mechanics of supervised, unsupervised, and reinforcement learning, the coach presented three applied scenarios drawn from common production ML failure modes: a telecom churn dataset with 20% missing billing values, a fraud detection dataset where fraud makes up only 0.05% of transactions, and a deployed housing price model whose accuracy degraded after a real-world market crash. For each, I had to diagnose the underlying problem, weigh trade-offs between competing fixes, and propose a concrete plan — then defend that reasoning when the coach pushed back or asked follow-up questions.</p>
+        </div>
+
+        <div>
+          <div class="field-label">Objective</div>
+          <p class="field-body muted">To practice diagnosing and reasoning through realistic data-quality and model-reliability problems — not just naming the right technique, but explaining why it applies and what it trades off against alternatives.</p>
+        </div>
+
+        <div>
+          <div class="field-label">Process</div>
+          <p class="field-body muted">For missing data, I chose median imputation over mean (to avoid outlier skew) and added a "missingness flag" rather than just dropping rows, since the absence of a value can itself be a signal. For class imbalance, I moved past accuracy as a metric entirely, proposing precision/recall/F1, resampling (including SMOTE), class weighting, and reframing the task as anomaly detection. For data drift, I correctly identified the housing scenario as covariate shift rather than concept shift, and proposed retraining on recent data, ongoing drift monitoring, and an automated retraining pipeline as a long-term fix. I also asked a follow-up question about sequencing when multiple failure modes occur together, which the coach confirmed matters: stabilize drift before re-tuning for imbalance.</p>
+        </div>
+
+        <div class="full-span">
+          <div class="field-label">Tools &amp; Technologies Used</div>
+          <div class="tools-list">
+            <span>AI-Guided Case Reasoning</span>
+            <span>Imputation Strategy</span>
+            <span>Class Imbalance Techniques (SMOTE, Class Weighting)</span>
+            <span>Covariate Shift Diagnosis</span>
+          </div>
+        </div>
+
+        <div class="full-span">
+          <div class="field-label">Testing &amp; Iteration</div>
+          <p class="field-body muted">Each scenario required me to justify my choice against a plausible alternative rather than simply naming a technique — for example, explaining why median beats mean imputation here specifically, and why accuracy is actively misleading on a 0.05%-positive-class problem. The coach's feedback confirmed the reasoning was sound and pushed me to extend it further with a follow-up on how to sequence fixes when problems compound, which clarified that fixing data drift takes priority over re-balancing classes.</p>
+        </div>
+      </div>
+
+      <div class="value-prop-box">
+        <div class="field-label">Value Proposition</div>
+        <p class="field-body">This shows I can reason about data quality and model reliability problems the way they actually show up in production — not as isolated textbook exercises, but as judgment calls with trade-offs, where the "right" fix depends on why the data looks the way it does.</p>
+      </div>
+
+      <div class="value-prop-box" style="margin-top:14px; border-left-color:var(--accent);">
+        <div class="field-label" style="color:var(--accent);">Unique Value &amp; Relevance</div>
+        <p class="field-body">Artifacts 1 and 2 show me building and pitching AI systems. This artifact shows the diagnostic judgment underneath both: recognizing what's actually wrong with a dataset or a deployed model, and choosing a fix based on the mechanism of the problem rather than a default playbook — a skill directly relevant to maintaining models in production, not just shipping them once.</p>
+      </div>
+
+    </div>
   </div>
 </section>
 
