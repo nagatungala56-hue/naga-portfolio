@@ -362,32 +362,32 @@
 
         <div class="full-span">
           <div class="field-label">Description</div>
-          <p class="field-body muted">After reviewing the foundational mechanics of supervised, unsupervised, and reinforcement learning, the coach presented three applied scenarios drawn from common production ML failure modes: a telecom churn dataset with 20% missing billing values, a fraud detection dataset where fraud makes up only 0.05% of transactions, and a deployed housing price model whose accuracy degraded after a real-world market crash. For each, I had to diagnose the underlying problem, weigh trade-offs between competing fixes, and propose a concrete plan — then defend that reasoning when the coach pushed back or asked follow-up questions.</p>
+          <p class="field-body muted">The coach presented three progressively harder, production-style data challenges: a subscription churn dataset with 30% of income values and 15% of time-spent values missing, a fraud detection dataset with a severe 0.5% positive class and asymmetric misclassification costs ($5,000 per missed fraud vs. $150 per false alarm), and a deployed credit risk model whose calibration had drifted after both a debt-to-income shift in the applicant population and an undisclosed change to how income was verified upstream. For each, I proposed and defended a full plan before receiving feedback, then had to reconcile that feedback with my original reasoning rather than just accepting it.</p>
         </div>
 
         <div>
           <div class="field-label">Objective</div>
-          <p class="field-body muted">To practice diagnosing and reasoning through realistic data-quality and model-reliability problems — not just naming the right technique, but explaining why it applies and what it trades off against alternatives.</p>
+          <p class="field-body muted">To practice diagnosing and reasoning through realistic data-quality and model-reliability problems — not just naming the right technique, but explaining why it applies here specifically and what it trades off against alternatives.</p>
         </div>
 
         <div>
           <div class="field-label">Process</div>
-          <p class="field-body muted">For missing data, I chose median imputation over mean (to avoid outlier skew) and added a "missingness flag" rather than just dropping rows, since the absence of a value can itself be a signal. For class imbalance, I moved past accuracy as a metric entirely, proposing precision/recall/F1, resampling (including SMOTE), class weighting, and reframing the task as anomaly detection. For data drift, I correctly identified the housing scenario as covariate shift rather than concept shift, and proposed retraining on recent data, ongoing drift monitoring, and an automated retraining pipeline as a long-term fix. I also asked a follow-up question about sequencing when multiple failure modes occur together, which the coach confirmed matters: stabilize drift before re-tuning for imbalance.</p>
+          <p class="field-body muted">For missing data, I used median (not mean) imputation for the skewed income field, proposed KNN imputation using correlated features, and added a missingness flag rather than dropping 30% of records — then had to reconsider whether that flag risked leakage before concluding it was valid signal, not leakage, since missingness would exist at inference time too. For the fraud problem, I translated the $5,000-to-$150 cost asymmetry into a class-weighting ratio, argued for threshold tuning against the actual cost matrix instead of the default 0.5 cutoff, and proposed anomaly detection as a complementary safety net for fraud patterns unseen in training — then revised my own approach after feedback that a raw 33:1 weight can over-correct and should be tuned rather than plugged in directly. For the credit risk model, I separated data drift (population change) from concept drift (a changed relationship between features and outcomes), correctly flagged the new income-verification method as a likely pipeline/schema issue rather than organic drift, and proposed recalibration before a full retrain since the model's ranking (AUC) was still intact.</p>
         </div>
 
         <div class="full-span">
           <div class="field-label">Tools &amp; Technologies Used</div>
           <div class="tools-list">
             <span>AI-Guided Case Reasoning</span>
-            <span>Imputation Strategy</span>
-            <span>Class Imbalance Techniques (SMOTE, Class Weighting)</span>
-            <span>Covariate Shift Diagnosis</span>
+            <span>Imputation Strategy (Median, KNN)</span>
+            <span>Cost-Sensitive Classification &amp; Threshold Tuning</span>
+            <span>Data Drift vs. Concept Drift Diagnosis</span>
           </div>
         </div>
 
         <div class="full-span">
           <div class="field-label">Testing &amp; Iteration</div>
-          <p class="field-body muted">Each scenario required me to justify my choice against a plausible alternative rather than simply naming a technique — for example, explaining why median beats mean imputation here specifically, and why accuracy is actively misleading on a 0.05%-positive-class problem. The coach's feedback confirmed the reasoning was sound and pushed me to extend it further with a follow-up on how to sequence fixes when problems compound, which clarified that fixing data drift takes priority over re-balancing classes.</p>
+          <p class="field-body muted">Each scenario pushed back on my first answer rather than simply confirming it — I had to justify scaling features before KNN imputation, reconsider whether a missingness flag was leakage, and recognize that a cost ratio isn't automatically the right model weight without validation. On the final scenario, feedback prompted me to separate a genuine population shift from what was really a silent schema change in a re-verified income field, and to recognize that AUC staying stable doesn't mean calibration is fine — a distinction I hadn't drawn on my own initial pass.</p>
         </div>
       </div>
 
