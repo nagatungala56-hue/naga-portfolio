@@ -424,54 +424,55 @@
     </div>
 
     <div class="artifact-card" style="margin-top:28px;">
-      <span class="artifact-tag">Artifact 04 · [Add Type Here]</span>
-      <h3>[Artifact 4 Title]</h3>
-      <p class="artifact-meta">[Course activity / project name] · [Skill area, e.g. Model Evaluation, Dashboard Design, AI Ethics]</p>
+      <span class="artifact-tag">Artifact 04 · Case Study Analysis</span>
+      <h3>From Lab to Clinic — A Case Study on Deep Learning for Diabetic Retinopathy Detection</h3>
+      <p class="artifact-meta">AIML-500 Case-Study Exploration · Model Validation, Ethics, and Post-Deployment Monitoring</p>
 
       <div class="artifact-grid">
         <div class="full-span">
           <div class="field-label">Introduction</div>
-          <p class="field-body muted">[1–3 sentences: what this artifact is and the problem it addresses.]</p>
+          <p class="field-body">This artifact is a critical analysis of one of the most thoroughly documented end-to-end ML projects in healthcare: Google's deep-learning system for detecting diabetic retinopathy (DR). I traced it across two paired studies — the original model-development paper (Gulshan et al., 2016) and a follow-up human-centered field study of the same system after deployment in Thai clinics (Beede et al., 2020) — to evaluate the full lifecycle from data preparation through post-deployment reality.</p>
         </div>
 
         <div class="full-span">
           <div class="field-label">Description</div>
-          <p class="field-body muted">[What the artifact covers in more depth — context, scope, and why it mattered.]</p>
+          <p class="field-body muted">Gulshan et al. trained a CNN (Inception-v3, pretrained then fine-tuned) on 128,175 retinal images, each graded 3–7 times by licensed ophthalmologists, and validated it on two independent held-out clinical sets (EyePACS-1, Messidor-2), reaching AUCs of 0.991 and 0.990. On paper, this is a model that works. Beede et al. then observed the same system in eleven real clinics and found that inconsistent exam-room lighting, unreliable connectivity for image uploads, and variation in how patients' eyes were photographed degraded image quality and performance in ways the lab-based AUC never anticipated — not a flaw in the model's architecture, but a mismatch between validation conditions and deployment conditions.</p>
         </div>
 
         <div>
           <div class="field-label">Objective</div>
-          <p class="field-body muted">[What you were trying to accomplish.]</p>
+          <p class="field-body muted">To evaluate a real, peer-reviewed ML system against the full lifecycle the course emphasizes — data preparation, model selection, validation, ethics, and monitoring — rather than judging it on accuracy alone, and to identify what I'd carry forward or avoid in my own future work.</p>
         </div>
 
         <div>
           <div class="field-label">Process</div>
-          <p class="field-body muted">[How you approached it — steps taken, decisions made.]</p>
+          <p class="field-body muted">Assessed the data-cleaning and labeling protocol (majority-vote grading, inter-grader agreement tracking) and the rationale for transfer learning over training from scratch. Flagged where the study was strong (independent held-out test sets, a clinically meaningful metric, sensitivity/specificity trade-off analysis across operating points) versus thin (no reported performance breakdown by demographic subgroup, camera type, or region; no documented consent, de-identification, or access-control plan for the clinical images used). Then connected the Beede field results back to a concrete recommendation: monitoring for input-data drift, subgroup and site-level auditing, and a front-line feedback channel should be designed into the validation protocol before deployment, not reconstructed afterward as a separate study.</p>
         </div>
 
         <div class="full-span">
           <div class="field-label">Tools &amp; Technologies Used</div>
           <div class="tools-list">
-            <span>[Tool 1]</span>
-            <span>[Tool 2]</span>
-            <span>[Tool 3]</span>
+            <span>Model Validation Analysis</span>
+            <span>Sensitivity/Specificity Trade-off Evaluation</span>
+            <span>AI Ethics &amp; Bias Review</span>
+            <span>Post-Deployment Monitoring Design</span>
           </div>
         </div>
 
         <div class="full-span">
           <div class="field-label">References</div>
-          <p class="field-body muted">[Course materials, datasets, or sources used.]</p>
+          <p class="field-body muted">Gulshan, V., Peng, L., Coram, M., Stumpe, M. C., Wu, D., Narayanaswamy, A., Venugopalan, S., Widner, K., Madams, T., Cuadros, J., Kim, R., Raman, R., Nelson, P. C., Mega, J. L., &amp; Webster, D. R. (2016). Development and validation of a deep learning algorithm for detection of diabetic retinopathy in retinal fundus photographs. <em>JAMA, 316</em>(22), 2402–2410. https://doi.org/10.1001/jama.2016.17216 &nbsp;|&nbsp; Beede, E., Baylor, E., Hersch, F., Iurchenko, A., Wilcox, L., Ruamviboonsuk, P., &amp; Vardoulakis, L. M. (2020). A human-centered evaluation of a deep learning system deployed in clinics for the detection of diabetic retinopathy. <em>Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems</em>, 1–12. https://doi.org/10.1145/3313831.3376718</p>
         </div>
       </div>
 
       <div class="value-prop-box">
         <div class="field-label">Value Proposition</div>
-        <p class="field-body">[Unique value: what specific, demonstrable skill this proves you have.]</p>
+        <p class="field-body">This shows I can evaluate an ML system the way it needs to be evaluated in high-stakes fields — not just "does the AUC look good," but whether the validation population matches the deployment population, whether fairness and privacy were actually documented, and whether a monitoring plan exists before real patients depend on the output.</p>
       </div>
 
       <div class="value-prop-box" style="margin-top:14px; border-left-color:var(--accent);">
         <div class="field-label" style="color:var(--accent);">Unique Value &amp; Relevance</div>
-        <p class="field-body">[How this artifact complements Artifacts 1–3 and why it's relevant to your target audience.]</p>
+        <p class="field-body">Artifacts 1–3 show me building, pitching, and diagnosing AI systems firsthand. This artifact shows the same critical judgment applied externally — to a real, published, clinically deployed model — which is directly relevant to healthcare and fintech employers who need someone who can vet a vendor's or a team's model claims, not just produce their own.</p>
       </div>
 
     </div>
